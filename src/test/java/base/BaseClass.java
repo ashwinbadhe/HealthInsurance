@@ -1,5 +1,7 @@
 package base;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -16,9 +18,13 @@ public class BaseClass
 	public void setup() 
 	{
         WebDriverManager.chromedriver().setup();
-        ChromeDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
+        
         driver.manage().window().maximize();
-        driver.get("https://demo.guru99.com/insurance/v1/index.php");
+        driver.get("https://demo.openimis.org/front/login");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));	
+//        Username: Admin
+//        Password: admin123
     }
 	
 	@AfterMethod
